@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\Admin\LoginController;
 
 /*
@@ -16,15 +17,18 @@ use App\Http\Controllers\Admin\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/',[ForntendController::class,'index']);
 
 Auth::routes();
 
+//fortend route
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 //admin route
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
 Route::get('admin', [LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin', [LoginController::class, 'login']);
 Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
+
