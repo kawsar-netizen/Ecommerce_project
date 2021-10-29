@@ -23,7 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-//admin
-Route::get('admin/home', [AdminController::class, 'index'])->name('admin');
+//admin route
+Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
 Route::get('admin', [LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin', [LoginController::class, 'login']);
+Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
