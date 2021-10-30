@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-
+@section('dashboard')
+  active
+@stop
 @section('admin_content')
 
     <!-- ########## START: MAIN PANEL ########## -->

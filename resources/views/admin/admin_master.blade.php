@@ -58,7 +58,7 @@
       </div><!-- input-group -->
       <hr>
       <div class="sl-sideleft-menu">
-        <a href="{{route('admin')}}" class="sl-menu-link active">
+        <a href="{{route('admin')}}" class="sl-menu-link @yield('dashboard')">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
@@ -70,10 +70,16 @@
             <span class="menu-item-label">Visit Site</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="{{route('admin.category')}}" class="sl-menu-link">
+        <a href="{{route('admin.category')}}" class="sl-menu-link @yield('category')">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Category</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="{{route('admin.brand')}}" class="sl-menu-link @yield('brand')">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <span class="menu-item-label">Brand</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <a href="widgets.html" class="sl-menu-link">

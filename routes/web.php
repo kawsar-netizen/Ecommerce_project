@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForntendController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 
@@ -42,3 +43,12 @@ Route::post('admin/categories/update',[CategoryController::class,'update'])->nam
 Route::get('admin/categories/delete/{id}',[CategoryController::class,'delete']);
 Route::get('admin/categories/inactive/{id}',[CategoryController::class,'inactive']);
 Route::get('admin/categories/active/{id}',[CategoryController::class,'active']);
+
+//======================== Admin Brand ==========================
+Route::get('admin/brands',[BrandController::class,'index'])->name('admin.brand');
+Route::post('admin/brands',[BrandController::class,'store'])->name('store.brand');
+Route::get('admin/brands/edit/{id}',[BrandController::class,'edit']);
+Route::post('admin/brands/update',[BrandController::class,'update'])->name('update.brand');
+Route::get('admin/brands/delete/{id}',[BrandController::class,'delete']);
+Route::get('admin/brands/inactive/{id}',[BrandController::class,'inactive']);
+Route::get('admin/brands/active/{id}',[BrandController::class,'active']);
