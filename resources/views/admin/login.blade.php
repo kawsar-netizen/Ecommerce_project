@@ -1,4 +1,4 @@
-@extends('admin.admin_layout')
+@extends('admin.admin_master')
 
 @section('admin_content')
 <div class="d-flex align-items-center justify-content-center bg-sl-primary ht-100v">
