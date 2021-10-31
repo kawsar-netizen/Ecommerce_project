@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
 /*
@@ -52,3 +53,8 @@ Route::post('admin/brands/update',[BrandController::class,'update'])->name('upda
 Route::get('admin/brands/delete/{id}',[BrandController::class,'delete']);
 Route::get('admin/brands/inactive/{id}',[BrandController::class,'inactive']);
 Route::get('admin/brands/active/{id}',[BrandController::class,'active']);
+
+//======================== Admin Product ==========================
+Route::get('admin/product/add',[ProductController::class,'add_product'])->name('admin.product.add');
+Route::post('admin/product/store',[ProductController::class,'store_products'])->name('store.products');
+Route::get('admin/product/manage',[ProductController::class,'manage_product'])->name('admin.manage.product');

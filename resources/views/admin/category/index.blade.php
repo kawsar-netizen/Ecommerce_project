@@ -71,13 +71,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{url('admin/categories/edit/'.$category->id)}}" class="btn btn-sm btn-success">Edit</a>
+                        <a href="{{url('admin/categories/edit/'.$category->id)}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
                         @if($category->status == 1)
-                        <a href="{{url('admin/categories/inactive/'.$category->id)}}" class="btn btn-sm btn-danger">Inactive</a>
+                        <a href="{{url('admin/categories/inactive/'.$category->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-arrow-down"></i></a>
                         @else
-                        <a href="{{url('admin/categories/active/'.$category->id)}}" class="btn btn-sm btn-success">Active</a>
+                        <a href="{{url('admin/categories/active/'.$category->id)}}" class="btn btn-sm btn-success"><i class="fa fa-arrow-up"></i></a>
                         @endif
-                        <a href="{{url('admin/categories/delete/'.$category->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="{{url('admin/categories/delete/'.$category->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                     </tr>
                 @endforeach
