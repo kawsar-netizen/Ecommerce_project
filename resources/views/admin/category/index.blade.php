@@ -77,7 +77,7 @@
                         @else
                         <a href="{{url('admin/categories/active/'.$category->id)}}" class="btn btn-sm btn-success"><i class="fa fa-arrow-up"></i></a>
                         @endif
-                        <a href="{{url('admin/categories/delete/'.$category->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                        <a href="{{url('admin/categories/delete/'.$category->id)}}" class="btn btn-sm btn-danger"onclick="return confirm('Are You Sure To Delete?')"><i class="fa fa-trash"></i></a>
                     </td>
                     </tr>
                 @endforeach

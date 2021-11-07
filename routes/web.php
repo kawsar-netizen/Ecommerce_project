@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
@@ -58,3 +59,18 @@ Route::get('admin/brands/active/{id}',[BrandController::class,'active']);
 Route::get('admin/product/add',[ProductController::class,'add_product'])->name('admin.product.add');
 Route::post('admin/product/store',[ProductController::class,'store_products'])->name('store.products');
 Route::get('admin/product/manage',[ProductController::class,'manage_product'])->name('admin.manage.product');
+Route::get('admin/product/edit/{id}',[ProductController::class,'product_edit']);
+Route::post('admin/product/update',[ProductController::class,'update_product'])->name('update.product');
+Route::post('admin/product/update/image',[ProductController::class,'update_image'])->name('update.image');
+Route::get('admin/product/delete/{id}',[ProductController::class,'delete']);
+Route::get('admin/product/inactive/{id}',[ProductController::class,'inactive']);
+Route::get('admin/product/active/{id}',[ProductController::class,'active']);
+
+//======================== Admin Coupon ==========================
+Route::get('admin/coupons',[CouponController::class,'index'])->name('admin.coupon');
+Route::post('admin/coupons',[CouponController::class,'store'])->name('store.coupon');
+Route::get('admin/coupons/edit/{id}',[CouponController::class,'edit_coupon']);
+Route::post('admin/coupons/update',[CouponController::class,'update_coupon'])->name('update.coupon');
+Route::get('admin/coupons/delete/{id}',[CouponController::class,'delete_coupon']);
+Route::get('admin/coupons/inactive/{id}',[CouponController::class,'inactive']);
+Route::get('admin/coupons/active/{id}',[CouponController::class,'active']);

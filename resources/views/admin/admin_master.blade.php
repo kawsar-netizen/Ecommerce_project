@@ -100,6 +100,13 @@
           <li class="nav-item"><a href="{{route('admin.product.add')}}" class="nav-link @yield('add_product')">Add Products</a></li>
           <li class="nav-item"><a href="{{route('admin.manage.product')}}" class="nav-link @yield('manage_product')">Manage Products</a></li>
         </ul>
+
+        <a href="{{route('admin.coupon')}}" class="sl-menu-link @yield('coupon')">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <span class="menu-item-label">Coupon</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
         
       </div><!-- sl-sideleft-menu -->
       <br>
