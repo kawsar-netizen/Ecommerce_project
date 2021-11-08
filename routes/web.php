@@ -7,6 +7,7 @@ use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
@@ -74,3 +75,10 @@ Route::post('admin/coupons/update',[CouponController::class,'update_coupon'])->n
 Route::get('admin/coupons/delete/{id}',[CouponController::class,'delete_coupon']);
 Route::get('admin/coupons/inactive/{id}',[CouponController::class,'inactive']);
 Route::get('admin/coupons/active/{id}',[CouponController::class,'active']);
+
+//=============================== Fontend Route ===============================
+
+//=============================== Add to Cart==================================
+
+Route::post('fontend/add_cart/{product_id}',[CartController::class,'AddtoCart'])->name('add.to_cart');
+Route::get('cart',[CartController::class,'cartPage'])->name('cart.page');
