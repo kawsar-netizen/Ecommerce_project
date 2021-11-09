@@ -11,11 +11,11 @@
                             <i class="fa fa-bars"></i>
                             <span>All Category</span>
                         </div>
-                        @php 
+                        <!-- @php 
 
                             $categories = App\Models\Category::where('status',1)->latest()->get();
                         
-                        @endphp
+                        @endphp -->
                         <ul>
                             @foreach($categories as $row)
                             <li><a href="#">{{$row->category_name}}</a></li>

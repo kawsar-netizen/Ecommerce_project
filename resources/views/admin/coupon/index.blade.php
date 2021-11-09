@@ -61,6 +61,7 @@
                 <tr>
                   <th class="wd-15p">Sl</th>
                   <th class="wd-15p">Coupon Name</th>
+                  <th class="wd-15p">Coupon Discount</th>
                   <th class="wd-20p">Status</th>
                   <th class="wd-15p">Action</th>
                 </tr>
@@ -73,6 +74,7 @@
                     <tr>
                     <td>{{$i++}}</td>
                     <td>{{$row->coupon_name}}</td>
+                    <td>{{$row->discount}}</td>
                     <td>
                         @if($row->status == 1)
                         <span class="badg badge-success">Active</span>
@@ -116,9 +118,16 @@
                         <form action="{{route('store.coupon')}}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="CategoryId">New Coupon</label>
-                                    <input type="text" name='coupon_name'class="form-control @error('coupon_name') is-invalid @enderror" pleasholder="Enter Coupon" id="CategoryId">
+                                    <label for="CategoryId">Coupon Name</label>
+                                    <input type="text" name='coupon_name' value="{{old('coupon_name')}}" class="form-control @error('coupon_name') is-invalid @enderror" pleasholder="Enter Coupon" id="CategoryId">
                                     @error("coupon_name")
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="CategoryId">Coupon Discount</label>
+                                    <input type="text" name='discount'value="{{old('discount')}}"class="form-control @error('discount') is-invalid @enderror" pleasholder="Enter Coupon Discount" id="CategoryId">
+                                    @error("discount")
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>

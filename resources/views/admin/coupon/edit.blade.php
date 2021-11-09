@@ -27,6 +27,13 @@
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="couponId">Coupon Discount</label>
+                                    <input type="text" name='discount'class="form-control @error('discount') is-invalid @enderror" id="couponId" value="{{$coupon->discount}}">
+                                    @error("discount")
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>

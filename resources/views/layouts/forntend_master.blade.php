@@ -148,12 +148,13 @@
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="{{route('admin')}}"> Admin </a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        @php
+                        <!-- @php
                         
                             $total = App\Models\Cart::all()->where('user_ip',request()->ip())->sum(
                                 function($t){
@@ -161,7 +162,7 @@
                                 });
                             $quantity = App\Models\Cart::where('user_ip',request()->ip())->sum('qty')
                         
-                        @endphp
+                        @endphp -->
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="{{url('cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{$quantity}}</span></a></li>

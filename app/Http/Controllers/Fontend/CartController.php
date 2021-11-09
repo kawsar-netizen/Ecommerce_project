@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Fontend;
 
 use App\Models\Cart;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+
 
 class CartController extends Controller
 {
@@ -29,10 +32,56 @@ class CartController extends Controller
 
    public function cartPage(){
        $carts = Cart::where('user_ip',request()->ip())->latest()->get();
+
+       $total = Cart::all()->where('user_ip',request()->ip())->sum(
+        function($t){
+          return  $t->price*$t->qty;
+        });
+
+       $quantity = Cart::where('user_ip',request()->ip())->sum('qty');
+
        $subTotal = Cart::all()->where('user_ip',request()->ip())->sum(
         function($t){
           return  $t->price*$t->qty;
         });
-       return view('pages.cart',compact('carts','subTotal'));
-   }
+
+       return view('pages.cart',compact('carts','total','quantity','subTotal'));
+        }
+
+        //=========================== Cart Destory =====================================
+
+        public function destroy($cart_id){
+          Cart::where('id',$cart_id)->where('user_ip',request()->ip())->delete();
+
+          return redirect()->back()->with('cart_destroy','Cart Product Removed Successfully!');
+
+        }
+
+        //=========================== Cart  Quantity Update =================================
+
+        public function quantity_update(Request $request,$cart_id){
+
+            Cart::where('id',$cart_id)->where('user_ip',request()->ip())->update([
+               'qty' => $request->qty,
+            ]);
+            return redirect()->back()->with('quantity_update','Cart Quantity Update Successfully!');
+        }
+
+        //=========================== Coupon Applied =================================
+
+        public function coupon_apply(Request $request){
+
+          $check = Coupon::where('coupon_name',$request->coupon_name)->first();
+          if($check){
+            Session::put('coupon',[
+              'coupon_name' => $check->coupon_name,
+              'discount'    => $check->discount,
+            ]);
+            return redirect()->back()->with('quantity_update','Successfully Coupon Applied');
+          }
+          else{
+            return redirect()->back()->with('cart_destroy','Invalid Coupon');
+          }
+        }
+
 }

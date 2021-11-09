@@ -24,9 +24,11 @@ class CouponController extends Controller
     public function store(Request $request){
         $request->validate([
             'coupon_name' => 'required|unique:coupons,coupon_name',
+            'discount' => 'required|unique:coupons,discount',
         ]);
         Coupon::insert([
             'coupon_name' =>strtoupper($request->coupon_name),
+            'discount' =>$request->discount,
             'created_at'  =>Carbon::now(),
 
         ]);
@@ -45,7 +47,8 @@ class CouponController extends Controller
     public function update_coupon(Request $request){
         $coupon_id = $request->id;
         Coupon::findOrFail($coupon_id)->update([
-            'coupon_name' => $request->coupon_name,
+            'coupon_name' => strtoupper($request->coupon_name),
+            'discount' =>$request->discount,
             'updated_at'  => Carbon::now()
         ]);
 

@@ -31,7 +31,9 @@ Auth::routes();
 //fortend route
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//================================ Admin Route =====================
+//================================ Backend Route =====================
+
+//================================ Admin Login =====================
 
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
 Route::get('admin', [LoginController::class, 'showLoginForm'])->name('admin.login');
@@ -82,3 +84,6 @@ Route::get('admin/coupons/active/{id}',[CouponController::class,'active']);
 
 Route::post('fontend/add_cart/{product_id}',[CartController::class,'AddtoCart'])->name('add.to_cart');
 Route::get('cart',[CartController::class,'cartPage'])->name('cart.page');
+Route::get('cart/destroy/{cart_id}',[CartController::class,'destroy']);
+Route::post('cart/quantity/update/{cart_id}',[CartController::class,'quantity_update']);
+Route::post('coupon/apply',[CartController::class,'coupon_apply']);
