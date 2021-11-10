@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Fontend\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::post('admin', [LoginController::class, 'login']);
 Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
 
 //======================== Admin Category ==========================
+
 Route::get('admin/categories',[CategoryController::class,'index'])->name('admin.category');
 Route::post('admin/categories',[CategoryController::class,'store'])->name('store.category');
 Route::get('admin/categories/edit/{id}',[CategoryController::class,'edit']);
@@ -50,6 +52,7 @@ Route::get('admin/categories/inactive/{id}',[CategoryController::class,'inactive
 Route::get('admin/categories/active/{id}',[CategoryController::class,'active']);
 
 //======================== Admin Brand ==========================
+
 Route::get('admin/brands',[BrandController::class,'index'])->name('admin.brand');
 Route::post('admin/brands',[BrandController::class,'store'])->name('store.brand');
 Route::get('admin/brands/edit/{id}',[BrandController::class,'edit']);
@@ -59,6 +62,7 @@ Route::get('admin/brands/inactive/{id}',[BrandController::class,'inactive']);
 Route::get('admin/brands/active/{id}',[BrandController::class,'active']);
 
 //======================== Admin Product ==========================
+
 Route::get('admin/product/add',[ProductController::class,'add_product'])->name('admin.product.add');
 Route::post('admin/product/store',[ProductController::class,'store_products'])->name('store.products');
 Route::get('admin/product/manage',[ProductController::class,'manage_product'])->name('admin.manage.product');
@@ -70,6 +74,7 @@ Route::get('admin/product/inactive/{id}',[ProductController::class,'inactive']);
 Route::get('admin/product/active/{id}',[ProductController::class,'active']);
 
 //======================== Admin Coupon ==========================
+
 Route::get('admin/coupons',[CouponController::class,'index'])->name('admin.coupon');
 Route::post('admin/coupons',[CouponController::class,'store'])->name('store.coupon');
 Route::get('admin/coupons/edit/{id}',[CouponController::class,'edit_coupon']);
@@ -80,10 +85,14 @@ Route::get('admin/coupons/active/{id}',[CouponController::class,'active']);
 
 //=============================== Fontend Route ===============================
 
-//=============================== Add to Cart==================================
+//=============================== Add to Cart ==================================
 
-Route::post('fontend/add_cart/{product_id}',[CartController::class,'AddtoCart'])->name('add.to_cart');
+Route::post('add_cart/{product_id}',[CartController::class,'AddtoCart'])->name('add.to_cart');
 Route::get('cart',[CartController::class,'cartPage'])->name('cart.page');
 Route::get('cart/destroy/{cart_id}',[CartController::class,'destroy']);
 Route::post('cart/quantity/update/{cart_id}',[CartController::class,'quantity_update']);
 Route::post('coupon/apply',[CartController::class,'coupon_apply']);
+
+//=============================== Add to Wishlist ==================================
+
+Route::get('add_wishlist/{product_id}',[WishlistController::class,'AddWishlist'])->name('add.wishlist');

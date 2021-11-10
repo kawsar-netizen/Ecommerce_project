@@ -118,10 +118,19 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
+                            @auth
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="{{route('home')}}"><i class="fa fa-user"></i> My Account</a>
+                            </div>
+                            @else
+                            <div class="header__top__right__auth">
+                                <a href="{{route('login')}}"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                            <div class="header__top__right__auth">  
+                                <a href="{{route('register')}}"><i class="fa fa-user"></i> Register</a>
                             </div>
                         </div>
+                            @endauth
                     </div>
                 </div>
             </div>
@@ -164,7 +173,7 @@
                         
                         @endphp -->
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
                             <li><a href="{{url('cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{$quantity}}</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>${{$total}}</span></div>

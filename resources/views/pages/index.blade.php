@@ -57,6 +57,16 @@
                     </div>
 
                 @endif
+                @if(Session::has('wishlist'))
+                    <div>
+                        <p class="alert alert-primary">{{ Session::get('wishlist') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="font-size:20px">×</span>
+                            </button>
+                        </p>
+                    </div>
+
+                @endif
                 
 <div class="hero__item set-bg" data-setbg="{{asset('forntend')}}/img/hero/banner.jpg">
                         <div class="hero__text">
@@ -116,9 +126,9 @@
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="{{asset($product->image_one)}}">
                             <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="{{'add_wishlist/'.$product->id}}"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <form action="{{url('fontend/add_cart/'.$product->id)}}" method="post">
+                                <form action="{{url('add_cart/'.$product->id)}}" method="post">
                                     @csrf
                                     <input type="hidden" name="price" value="{{$product->price}}">
                                     <li>
