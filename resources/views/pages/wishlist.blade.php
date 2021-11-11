@@ -56,10 +56,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Shopping Cart</h2>
+                        <h2>Wishlist Pages</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <span>Shopping Cart</span>
+                            <span>Wishlist Pages</span>
                         </div>
                     </div>
                 </div>
@@ -72,9 +72,9 @@
 
     <section class="shoping-cart spad">
         <div class="container">
-        @if(Session::has('cart_destroy'))
+        @if(Session::has('wishlist_destroy'))
                     <div>
-                        <p class="alert alert-danger">{{ Session::get('cart_destroy') }}
+                        <p class="alert alert-danger">{{ Session::get('wishlist_destroy') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="font-size:20px">×</span>
                             </button>
@@ -82,9 +82,9 @@
                     </div>
 
                 @endif
-        @if(Session::has('quantity_update'))
+        @if(Session::has('wishlist'))
                     <div>
-                        <p class="alert alert-success">{{ Session::get('quantity_update') }}
+                        <p class="alert alert-success">{{ Session::get('wishlist') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="font-size:20px">×</span>
                             </button>
@@ -100,38 +100,30 @@
                                 <tr>
                                     <th class="shoping__product">Products</th>
                                     <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
+                                    <th>Add Cart</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($carts as $cart)
+                                @foreach($wishlistQty as $wishlist)
                                 <tr>
-                                <td class="shoping__cart__item">
-                                        <img src="{{asset($cart->product_cart->image_one)}}" style = "height:70px; width:70px" alt="">
-                                        <h5>{{$cart->product_cart->product_name}}</h5>
+                                    <td class="shoping__cart__item">
+                                        <img src="{{$wishlist->product_wishlist->image_one}}" style = "height:70px; width:70px" alt="">
+                                        <h5>{{$wishlist->product_wishlist->product_name}}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        ${{$cart->product_cart->price}}
+                                        ${{$wishlist->product_wishlist->price}}
                                     </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <form action="{{url('cart/quantity/update/'.$cart->id)}}"method="post">
-                                            @csrf
-                                            <div class="pro-qty">
-                                                <input type="text" name="qty" value="{{$cart->qty}}">
-                                            </div>
-                                            <button type="submit" class="btn btn-sm btn-success" onclick ="return confirm('Are You Sure Quantity Updated')" >Update</button>
-                                            </form>
-                                        </div>
-                                       
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        ${{$cart->price * $cart->qty}}
+                                    <td class="shoping__cart__price">
+                                    <form action="{{url('add_cart/'.$wishlist->product_id)}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="price" value="{{$wishlist->product_wishlist->price}}">
+                                        <button class="btn btn-sm btn-danger">
+                                            Add To Cart
+                                        </button>
+                                    </form>
                                     </td>
                                     <td class="shoping__cart__item__close">                                        
-                                            <a href="{{url('cart/destroy/'.$cart->id)}}" onclick="return confirm('Are You Sure To Delete?')">
+                                            <a href="{{url('wishlist/destroy/'.$wishlist->id)}}" onclick="return confirm('Are You Sure To Delete?')">
                                                 <span class="icon_close"></span>
                                             </a>
                                     </td>
@@ -139,45 +131,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="{{url('/')}}" class="btn btn-success cart-btn">CONTINUE SHOPPING</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    @if(Session::has('coupon'))
-                    @else
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="{{url('coupon/apply')}}" method="post">
-                                @csrf
-                                <input type="text" name="coupon_name" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
-                        <ul>
-                            @if(Session::has('coupon'))
-                            <li>Subtotal <span>${{$subTotal}}</span></li>
-                            <li>Discount<span>{{Session()->get('coupon')['discount']}}%
-                                (${{$discount = $subTotal * Session()->get('coupon')['discount'] /100}})
-                                <li>Total <span>${{$subTotal - $discount}} </span></li>
-                            </span></li>
-                            @else
-                            <li>Subtotal <span>${{$subTotal}}</span></li>
-                            @endif
-                        </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

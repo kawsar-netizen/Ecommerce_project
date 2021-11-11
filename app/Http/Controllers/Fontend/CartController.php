@@ -26,9 +26,9 @@ class CartController extends Controller
                 'created_at' => Carbon::now()
                ]);
         }
-       return redirect()->back()->with('cart','Product Add To Cart Successfully!');;
+       return redirect()->back()->with('cart','Product Add To Cart Successfully!');
    }
-   //=========================== Cart Page =====================================
+   //=========================== Cart Pages =====================================
 
    public function cartPage(){
        $carts = Cart::where('user_ip',request()->ip())->latest()->get();

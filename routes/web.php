@@ -96,3 +96,9 @@ Route::post('coupon/apply',[CartController::class,'coupon_apply']);
 //=============================== Add to Wishlist ==================================
 
 Route::get('add_wishlist/{product_id}',[WishlistController::class,'AddWishlist'])->name('add.wishlist');
+Route::get('wishlist',[WishlistController::class,'wishlistpage'])->name('wishlist.page');
+Route::get('wishlist/destroy/{wishlist_id}',[WishlistController::class,'destroy']);
+
+//=============================== Product Details ==================================
+
+Route::get('product/details/{product_id}',[ForntendController::class,'product_details']);
