@@ -92,6 +92,7 @@ Route::get('cart',[CartController::class,'cartPage'])->name('cart.page');
 Route::get('cart/destroy/{cart_id}',[CartController::class,'destroy']);
 Route::post('cart/quantity/update/{cart_id}',[CartController::class,'quantity_update']);
 Route::post('coupon/apply',[CartController::class,'coupon_apply']);
+Route::get('coupon/destroy',[CartController::class,'coupon_destroy']);
 
 //=============================== Add to Wishlist ==================================
 

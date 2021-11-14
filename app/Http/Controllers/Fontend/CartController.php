@@ -83,5 +83,12 @@ class CartController extends Controller
             return redirect()->back()->with('cart_destroy','Invalid Coupon');
           }
         }
+        //=========================== Coupon Destroy =================================
+        public function coupon_destroy(){
+          if(Session::has('coupon')){
+            session()->forget('coupon');
+            return redirect()->back()->with('cart_destroy', 'Coupon Removed Successfully!');
+          }
+        }
 
 }

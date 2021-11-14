@@ -169,6 +169,7 @@
                         <ul>
                             @if(Session::has('coupon'))
                             <li>Subtotal <span>${{$subTotal}}</span></li>
+                            <li>Coupon <span>{{Session()->get('coupon')['coupon_name']}} <a href="{{url('coupon/destroy')}}"><i class="fa fa-times"></i></a></span></li>
                             <li>Discount<span>{{Session()->get('coupon')['discount']}}%
                                 (${{$discount = $subTotal * Session()->get('coupon')['discount'] /100}})
                                 <li>Total <span>${{$subTotal - $discount}} </span></li>
