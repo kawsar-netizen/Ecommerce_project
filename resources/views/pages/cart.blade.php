@@ -171,14 +171,14 @@
                             <li>Subtotal <span>${{$subTotal}}</span></li>
                             <li>Coupon <span>{{Session()->get('coupon')['coupon_name']}} <a href="{{url('coupon/destroy')}}"><i class="fa fa-times"></i></a></span></li>
                             <li>Discount<span>{{Session()->get('coupon')['discount']}}%
-                                (${{$discount = $subTotal * Session()->get('coupon')['discount'] /100}})
-                                <li>Total <span>${{$subTotal - $discount}} </span></li>
+                                (${{Session()->get('coupon')['discount_amount']}})
+                                <li>Total <span>${{$subTotal - Session()->get('coupon')['discount_amount']}} </span></li>
                             </span></li>
                             @else
                             <li>Subtotal <span>${{$subTotal}}</span></li>
                             @endif
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="{{route('checkout')}}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

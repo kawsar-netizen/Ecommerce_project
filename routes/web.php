@@ -9,7 +9,9 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Fontend\OrderController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Fontend\CheckoutController;
 use App\Http\Controllers\Fontend\WishlistController;
 
 /*
@@ -103,3 +105,11 @@ Route::get('wishlist/destroy/{wishlist_id}',[WishlistController::class,'destroy'
 //=============================== Product Details ==================================
 
 Route::get('product/details/{product_id}',[ForntendController::class,'product_details']);
+
+//=============================== Checkout Route ==================================
+
+Route::get('checkout',[CheckoutController::class,'index'])->name('checkout');
+
+//=============================== Order Route ==================================
+
+Route::post('place/order',[OrderController::class,'orderstore'])->name('place_order');

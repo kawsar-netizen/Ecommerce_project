@@ -73,9 +73,14 @@ class CartController extends Controller
 
           $check = Coupon::where('coupon_name',$request->coupon_name)->first();
           if($check){
+            $subTotal = Cart::all()->where('user_ip',request()->ip())->sum(
+              function($t){
+                return  $t->price*$t->qty;
+              });
             Session::put('coupon',[
               'coupon_name' => $check->coupon_name,
               'discount'    => $check->discount,
+              'discount_amount'    => $subTotal * ($check->discount/100),
             ]);
             return redirect()->back()->with('quantity_update','Successfully Coupon Applied');
           }

@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coupon extends Model
+class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'coupon_name',
-        'discount',
-        'status',
+        'user_id',
+        'invoice_no',
+        'payment_type',
+        'total',
+        'subtotal',
+        'coupon_discount',
     ];
+
 }
