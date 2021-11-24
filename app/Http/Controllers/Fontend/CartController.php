@@ -31,6 +31,7 @@ class CartController extends Controller
    //=========================== Cart Pages =====================================
 
    public function cartPage(){
+     
        $carts = Cart::where('user_ip',request()->ip())->latest()->get();
 
        $total = Cart::all()->where('user_ip',request()->ip())->sum(

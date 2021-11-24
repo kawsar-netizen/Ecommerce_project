@@ -11,6 +11,7 @@ use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Fontend\OrderController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Fontend\CheckoutController;
 use App\Http\Controllers\Fontend\WishlistController;
 
@@ -85,6 +86,11 @@ Route::get('admin/coupons/delete/{id}',[CouponController::class,'delete_coupon']
 Route::get('admin/coupons/inactive/{id}',[CouponController::class,'inactive']);
 Route::get('admin/coupons/active/{id}',[CouponController::class,'active']);
 
+//======================== Admin Orders ==========================
+
+Route::get('admin/orders',[OrdersController::class,'index'])->name('admin.orders');
+Route::get('admin/orders/view/{id}',[OrdersController::class,'orderView'])->name('orders.view');
+
 //=============================== Fontend Route ===============================
 
 //=============================== Add to Cart ==================================
@@ -113,3 +119,4 @@ Route::get('checkout',[CheckoutController::class,'index'])->name('checkout');
 //=============================== Order Route ==================================
 
 Route::post('place/order',[OrderController::class,'orderstore'])->name('place_order');
+Route::get('order/success',[OrderController::class,'ordersuccess'])->name('order_success');
