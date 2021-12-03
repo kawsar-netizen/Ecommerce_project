@@ -91,19 +91,30 @@
     <div class="col-sm-8">
         <div class="card">
         <div class="card-body">
-    <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->name}}">
-
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
-
-            </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-    </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Invioce No.</th>
+                <th scope="col">Payment Type</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Total</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($orders as $order)
+                <tr>
+                <td>{{$order->invoice_no}}</td>
+                <td>{{$order->payment_type}}</td>
+                <td>{{$order->subtotal}}</td>
+                <td>{{$order->total}}</td>
+                <td>
+                    <a href="" class='btn btn-danger btn-sm'>View</a>
+                </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
       </div>
     </div>
   </div>

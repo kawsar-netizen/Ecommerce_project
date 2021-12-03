@@ -7,11 +7,12 @@ use App\Http\Controllers\ForntendController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Fontend\CartController;
+use App\Http\Controllers\Fontend\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Fontend\OrderController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Fontend\CheckoutController;
 use App\Http\Controllers\Fontend\WishlistController;
 
@@ -32,10 +33,15 @@ Route::get('/',[ForntendController::class,'index']);
 
 Auth::routes();
 
-//fortend route
+//================================ fortend route ===================
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//================================ Backend Route =====================
+//================================ user route ===================
+
+Route::get('user/order', [UserController::class, 'order'])->name('user.order');
+
+//================================ Backend Route ===================
 
 //================================ Admin Login =====================
 
