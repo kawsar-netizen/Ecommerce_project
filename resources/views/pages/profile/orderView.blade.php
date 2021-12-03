@@ -59,7 +59,7 @@
                         <h2>My Profile</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <span>My Profile</span>
+                            <span>My Order Details</span>
                         </div>
                     </div>
                 </div>
@@ -69,32 +69,74 @@
     <!-- Breadcrumb Section End -->
 <section class="shoping-cart spad">
     <div class="container">
-    <div class="row">
+<div class="row">
+
     <div class="col-sm-4">
 
-@include('pages.profile.inc.sidebar')
+                @include('pages.profile.inc.sidebar')
 
-    </div>
+    </div> 
+
     <div class="col-sm-8">
         <div class="card">
         <div class="card-body">
-    <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->name}}">
-
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
-
-            </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-    </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Invioce No.</th>
+                <th scope="col">Payment Type</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>{{$order->invoice_no}}</td>
+                <td>{{$order->payment_type}}</td>
+                <td>{{$order->subtotal}}</td>
+                <td>{{$order->total}}</td>
+                </tr>
+            </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
+</br>
+<div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-8">
+        <div class="card">
+        <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Shipping First Name No.</th>
+                <th scope="col">Shipping Last Name</th>
+                <th scope="col">Shipping Email</th>
+                <th scope="col">Shipping Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">State</th>
+                <th scope="col">Post Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>{{$shipping->shipping_first_name}}</td>
+                <td>{{$shipping->shipping_last_name}}</td>
+                <td>{{$shipping->shipping_email}}</td>
+                <td>{{$shipping->shipping_phone}}</td>
+                <td>{{$shipping->address}}</td>
+                <td>{{$shipping->state}}</td>
+                <td>{{$shipping->post_code}}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 @endsection

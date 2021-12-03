@@ -40,6 +40,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 //================================ user route ===================
 
 Route::get('user/order', [UserController::class, 'order'])->name('user.order');
+Route::get('user/order-view/{id}',[UserController::class,'orderView'])->name('order.view');
 
 //================================ Backend Route ===================
 
