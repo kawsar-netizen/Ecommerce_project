@@ -94,7 +94,7 @@
                 <td>{{$order->subtotal}}</td>
                 <td>{{$order->total}}</td>
                 <td>
-                    <a href="{{url('user/order-view/'.$order->id)}}" class='btn btn-danger btn-sm'>View</a>
+                    <a href="{{url('user/order-view/'.$order->id)}}" class='btn btn-info btn-sm'><i class="fa fa-eye"></i></a>
                 </td>
                 </tr>
                 @endforeach

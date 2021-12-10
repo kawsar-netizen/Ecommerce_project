@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Fontend;
 
 use App\Models\Cart;
 use App\Models\Coupon;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -34,6 +35,8 @@ class CartController extends Controller
      
        $carts = Cart::where('user_ip',request()->ip())->latest()->get();
 
+       $categories = Category::where('status',1)->latest()->get();
+
        $total = Cart::all()->where('user_ip',request()->ip())->sum(
         function($t){
           return  $t->price*$t->qty;
@@ -46,7 +49,7 @@ class CartController extends Controller
           return  $t->price*$t->qty;
         });
 
-       return view('pages.cart',compact('carts','total','quantity','subTotal'));
+       return view('pages.cart',compact('carts','categories','total','quantity','subTotal'));
         }
 
         //=========================== Cart Destory =====================================

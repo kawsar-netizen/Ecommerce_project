@@ -87,6 +87,7 @@
                 <th scope="col">Payment Type</th>
                 <th scope="col">Subtotal</th>
                 <th scope="col">Total</th>
+                <th scope="col">Order Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,6 +96,7 @@
                 <td>{{$order->payment_type}}</td>
                 <td>{{$order->subtotal}}</td>
                 <td>{{$order->total}}</td>
+                <td>{{$order->created_at}}</td>
                 </tr>
             </tbody>
         </table>
@@ -113,7 +115,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                <th scope="col">Shipping First Name No.</th>
+                <th scope="col">Shipping First Name</th>
                 <th scope="col">Shipping Last Name</th>
                 <th scope="col">Shipping Email</th>
                 <th scope="col">Shipping Phone</th>
@@ -132,6 +134,40 @@
                 <td>{{$shipping->state}}</td>
                 <td>{{$shipping->post_code}}</td>
                 </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-8">
+        <div class="card">
+        <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Product Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Code</th>
+                <th scope="col">Product Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($orderItem as $item)
+                <tr>
+                <td>
+                    <img src="{{asset($item->product->image_one)}}" height="60px" width="60px" alt="">
+                </td>
+                <td>{{$item->product->product_name}}</td>
+                <td>{{$item->product->product_code}}</td>
+                <td>{{$item->product->product_quantity}}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
       </div>

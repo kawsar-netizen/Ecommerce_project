@@ -15,6 +15,7 @@ class UserController extends Controller
         $orders = Order::where('user_id',Auth::id())->latest()->get();
         return view ('pages.profile.order',compact('orders'));
     }
+    
     public function orderView($order_id){
         $order = Order::findOrFail($order_id);
         $orderItem = OrderItem::with('product')->where('order_id',$order_id)->get();

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Fontend\CartController;
+use App\Http\Controllers\Fontend\ShopController;
 use App\Http\Controllers\Fontend\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Fontend\OrderController;
@@ -37,14 +38,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//================================ user route ===================
+//================================ Backend Route =====================
 
-Route::get('user/order', [UserController::class, 'order'])->name('user.order');
-Route::get('user/order-view/{id}',[UserController::class,'orderView'])->name('order.view');
-
-//================================ Backend Route ===================
-
-//================================ Admin Login =====================
+//================================ Admin Login =======================
 
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
 Route::get('admin', [LoginController::class, 'showLoginForm'])->name('admin.login');
@@ -99,6 +95,16 @@ Route::get('admin/orders',[OrdersController::class,'index'])->name('admin.orders
 Route::get('admin/orders/view/{id}',[OrdersController::class,'orderView'])->name('orders.view');
 
 //=============================== Fontend Route ===============================
+
+
+//================================ user route ======================
+
+Route::get('user/order', [UserController::class, 'order'])->name('user.order');
+Route::get('user/order-view/{id}',[UserController::class,'orderView'])->name('order.view');
+
+//================================ shop route ======================
+
+Route::get('shop',[ShopController::class,'index'])->name('shop.pages');
 
 //=============================== Add to Cart ==================================
 
